@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+    fabio:
+        image: fabiolb/fabio:latest
+        command: "-registry.consul.addr consul:8500" # By default, fabio will look for consul agent at 127.0.0.1:8500
+        ports:
+            - "9998:9998" # Fabio dashboard
+            - "9999:9999" # Fabio proxy port - this is where traffic comes in
+
+    consul:
+        image: consul:latest
+        ports:
+            - "8500:8500" # Consul dashboard
+            - "8600:8600/udp"
+
+    web1:
+        build: .
+        ports:
+            - "9001:80"
+        command: []
+
+    web2:
+        build: .
+        ports:
+            - "9002:80"
+        command: [":80", "Hello Web 2"]
+
+    web3:
+        build: .
+        ports:
+            - "9003:8080"
+        command: [":8080", "Hello Web 3"]
