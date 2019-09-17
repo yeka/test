@@ -1,8 +1,9 @@
 # Test
 
 This is my testing ground.
-It heavily use docker for ease of setup.
+It uses docker heavily for ease of setup.
 
 ## Contents
 
-- [Fabio](/fabio)
+- [Fabio](/fabio) - A load balancer that integrates with Consul
+- [Kubernetes](/kubernetes) - A deployment manager
