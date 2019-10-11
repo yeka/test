@@ -7,3 +7,4 @@ It uses docker heavily for ease of setup.
 
 - [Fabio](/fabio) - A load balancer that integrates with Consul
 - [Kubernetes](/kubernetes) - A deployment manager
+- [Hashicorp Nomad](/nomad) - A workload orchestrator
