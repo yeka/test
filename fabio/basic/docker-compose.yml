@@ -2,7 +2,7 @@ version: "3"
 
 services:
     fabio:
-        image: fabiolb/fabio:latest
+        image: fabiolb/fabio:1.5.12-go1.13.1
         command: "-registry.consul.addr consul:8500" # By default, fabio will look for consul agent at 127.0.0.1:8500
         ports:
             - "9998:9998" # Fabio dashboard

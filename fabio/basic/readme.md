@@ -72,4 +72,12 @@ docker-compose stop web1
 
 You could also play around with the tags when service is registered. More info on how to manage the routing can be found on Fabio's homepage.
 
+Another way to register service in fabio is via Consul's Key Value store. It watch for `/fabio/config` key.
+You can add something like this:
+```
+route add app /web http://host.docker.internal:9001
+route add app2 / http://web2:80
+```
+
+
 To register the service automatically, you could also utilize [Service Registrator](https://github.com/gliderlabs/registrator).

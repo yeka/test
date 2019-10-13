@@ -8,6 +8,9 @@ And consul is a service discovery.
 ### Basic - [/basic](/basic)
 A very minimal setup of Fabio which consist of 3 main parts: Fabio-LB, Consul, and Example Web Server
 
+### Simple Production Setup [/simple-production](/simple-production)
+A walk through how you can use Fabio to listen to HTTP & HTTPS
+
 ## Links:
 
     - Fabio - [https://github.com/fabiolb/fabio](https://github.com/fabiolb/fabio)
