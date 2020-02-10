@@ -1,0 +1,57 @@
+{
+  "size": 0,
+  "aggs": {
+    "orange": {
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "nested": {
+                "path": "attributes",
+                "query": {
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "attributes.key": "Color"
+                        }
+                      },
+                      {
+                        "term": {
+                          "attributes.value": "Orange"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "attributes": {
+          "nested": {
+            "path": "attributes"
+          },
+          "aggs": {
+            "sizes": {
+              "filter": {
+                "term": {
+                  "attributes.key": "Size"
+                }
+              },
+              "aggs": {
+                "value": {
+                  "terms": {
+                    "field": "attributes.value"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "size": 0,
+  "aggs": {
+    "attributes": {
+      "terms": {
+        "field": "attributes",
+        "include": "Color:.*"
+      }
+    }
+  }
+}

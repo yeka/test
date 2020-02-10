@@ -1,0 +1,17 @@
+{
+  "size": 0,
+  "aggs": {
+    "attributes": {
+      "nested": {
+        "path": "attributes"
+      },
+      "aggs": {
+        "colors": {
+          "terms": {
+            "field": "attributes.key"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "size": 0,
+  "aggs": {
+    "attributes": {
+      "terms": {
+        "field" : "attributes",
+        "script" : {
+          "source": "_value.substring(0, _value.indexOf(':'))",
+          "lang": "painless"
+        }
+      }
+    }
+  }
+}

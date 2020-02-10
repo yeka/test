@@ -1,0 +1,50 @@
+{
+  "aggs": {
+    "orange_colors": {
+      "filter": {
+        "term": {
+          "attributes": "Color:Orange"
+        }
+      },
+      "aggs": {
+        "sizes": {
+          "terms": {
+            "field": "attributes",
+            "include": "Size:.*"
+          }
+        }
+      }
+    },
+    "xl_sizes": {
+      "filter": {
+        "term": {
+          "attributes": "Size:XL"
+        }
+      },
+      "aggs": {
+        "colors": {
+          "terms": {
+            "field": "attributes",
+            "include": "Color:.*"
+          }
+        }
+      }
+    }
+  },
+  "post_filter": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "attributes": "Color:Orange"
+          }
+        },
+        {
+          "term": {
+            "attributes": "Size:XL"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "nested": {
+            "path": "attributes",
+            "query": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "attributes.key": "Color"
+                    }
+                  },
+                  {
+                    "term": {
+                      "attributes.value": "Orange"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "attributes",
+            "query": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "attributes.key": "Size"
+                    }
+                  },
+                  {
+                    "term": {
+                      "attributes.value": "XL"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

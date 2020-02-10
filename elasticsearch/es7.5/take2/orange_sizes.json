@@ -1,0 +1,20 @@
+{
+  "size": 0,
+  "aggs": {
+    "orange": {
+      "filter": {
+        "term": {
+          "attributes": "Color:Orange"
+        }
+      },
+      "aggs": {
+        "sizes": {
+          "terms": {
+            "field": "attributes",
+            "include": "Size:.*"
+          }
+        }
+      }
+    }
+  }
+}

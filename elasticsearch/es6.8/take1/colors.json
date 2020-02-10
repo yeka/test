@@ -1,0 +1,26 @@
+{
+  "size": 0,
+  "aggs": {
+    "attributes": {
+      "nested": {
+        "path": "attributes"
+      },
+      "aggs": {
+        "keys": {
+          "filter": {
+            "term": {
+              "attributes.key": "Color"
+            }
+          },
+          "aggs": {
+            "colors": {
+              "terms": {
+                "field": "attributes.value"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

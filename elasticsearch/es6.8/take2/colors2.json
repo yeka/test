@@ -1,0 +1,15 @@
+{
+  "size": 0,
+  "aggs": {
+    "attributes": {
+      "terms": {
+        "field": "attributes",
+        "script": {
+          "source": "String choose(String v) {if (v.substring(0, v.indexOf(':')) == 'Color') {return v.substring(1+v.indexOf(':'))} else {return '-'}} choose(_value)",
+          "lang": "painless"
+        },
+        "exclude": "-"
+      }
+    }
+  }
+}
