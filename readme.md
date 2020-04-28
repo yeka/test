@@ -29,3 +29,5 @@ sshuttle -r root@127.0.0.1:2222 -N 172.17.0.0/24
 Normally, container's IP is on `172.17.0.*`.
 You can check it using `docker container inspect [container_name] | grep IPAddress`
 The default root password for `rastasheep/ubuntu-sshd:14.04` is `root`.
+
+Note:  I haven't been able to run `sshuttle` against alpine-based ssh server. That's why ubuntu-based sshd is used. 
