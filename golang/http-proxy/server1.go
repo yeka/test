@@ -11,6 +11,7 @@ func main() {
 	m := http.NewServeMux()
 	m.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintln(w, "Hello world\n")
+		fmt.Fprintln(w, "Host:", req.Host)
 		fmt.Fprintln(w, "Request URI:", req.RequestURI)
 		if len(req.Header) > 0 {
 			fmt.Fprintln(w, "Headers:")
