@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+    redis:
+        image: redis:6.0.1-alpine3.11
+        networks:
+            app_net:
+                ipv4_address: "192.168.10.3"
+
+    sshd:
+        image: sickp/alpine-sshd:7.5
+        ports:
+            - "2222:22"
+        networks:
+            app_net:
+                ipv4_address: "192.168.10.2"
+
+networks:
+    app_net:
+        ipam:
+            driver: default
+            config:
+                -   subnet: "192.168.10.0/24"
