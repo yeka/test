@@ -3,7 +3,6 @@ package libs
 import (
 	"errors"
 	"fmt"
-	"golang.org/x/crypto/ssh"
 	"io"
 	"io/ioutil"
 	"net"
@@ -12,6 +11,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"golang.org/x/crypto/ssh"
 )
 
 const (

@@ -10,8 +10,11 @@ import (
 	"strings"
 )
 
-func Telnet(addr string) (errr error) {
-	c, err := net.Dial("tcp", addr)
+func Telnet(addr string, dialFn func(network, addres string) (net.Conn, error)) (errr error) {
+	if dialFn == nil {
+		dialFn = net.Dial
+	}
+	c, err := dialFn("tcp", addr)
 	if err != nil {
 		return err
 	}
