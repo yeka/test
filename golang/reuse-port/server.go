@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/libp2p/go-reuseport"
+	reuseport "github.com/libp2p/go-reuseport"
 )
 
 func main() {
@@ -32,8 +32,8 @@ func main() {
 
 	go func() {
 		err = s.Serve(l)
-		if err != nil {
-			fmt.Println("Error serving:", err)
+		if err != nil && err != http.ErrServerClosed {
+			fmt.Printf("Error serving: %#v\n", err)
 		}
 	}()
 
