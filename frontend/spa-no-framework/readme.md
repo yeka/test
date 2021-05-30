@@ -12,4 +12,5 @@ Start by creating a `server.js` to serve the static html.
 
 Reference:
 - https://www.youtube.com/watch?v=6BozpmSjk-Y
+- https://www.youtube.com/watch?v=OstALBk-jTc
 - https://github.com/dcode-youtube/single-page-app-vanilla-js
