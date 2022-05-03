@@ -1,0 +1,17 @@
+api:
+  # enable dashboard
+  dashboard: true
+
+  # we don't use insecure mode, so routing to the dashboard must be defined in Dynamic Configuration
+  # insecure: true
+
+providers:
+  # "file" provider is one of many Dynamic Configuration providers
+  file:
+    filename: ./config2.yml
+    watch: true
+
+entryPoints:
+  # "web" is the name of our choice, which listen to given address
+  web:
+    address: ":8000"

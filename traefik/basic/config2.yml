@@ -1,0 +1,43 @@
+http:
+  routers:
+    traefik_api:
+      entryPoints:
+      - web
+      rule: "PathPrefix(`/api`)"
+      service: "api@internal"
+
+    traefik_dashboard:
+      entryPoints:
+      - web
+      rule: "PathPrefix(`/dashboard/`)"
+      middlewares:
+      - dashboardMiddleware
+      service: "dashboard@internal"
+
+   # "myweb" is the name of our router, can be anything
+    myweb:
+      # "entryPoints" specifies which entry point will be used for this router. 
+      # The name of entry points (such as "web") are defined in Static Configuration (see traefik.yml).
+      entryPoints:
+      - "web"
+
+      # "rule" is a must, it defines some criterias that will activates this route.
+      rule: "PathPrefix(`/`)"
+
+      # "service" defines which service this route will pass to.
+      service: "goweb"
+  
+  services:
+    # "goweb" is the name of service, can be anything.
+    # this service is used by routers.
+    goweb:
+      loadBalancer:
+        servers:
+          - url: "http://127.0.0.1:8100"
+
+  middlewares:
+    dashboardMiddleware:
+      stripPrefix:
+        prefixes:
+          - "/dashboard"
+

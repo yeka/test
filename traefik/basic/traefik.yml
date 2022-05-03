@@ -1,0 +1,17 @@
+api:
+  # enable dashboard
+  dashboard: true
+
+  # use insecure mode, so the dashboard will listen on :8080 port specifically
+  insecure: true
+
+providers:
+  # "file" provider is one of many Dynamic Configuration providers
+  file:
+    filename: ./config.yml
+    watch: true
+
+entryPoints:
+  # "web" is the name of our choice, which listen to given address
+  web:
+    address: ":8000"
