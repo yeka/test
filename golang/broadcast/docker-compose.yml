@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    node1:
+        image: alpine
+        volumes:
+            - .:/app
+        working_dir: /app
+        command: /app/listen
+
