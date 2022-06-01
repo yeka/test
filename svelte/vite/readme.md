@@ -69,6 +69,25 @@ You can also use local scss by adding `lang="scss"` in `<style>` tag:
 ```html
 <style lang="scss">
 </style>
+```
+
+### Adding Bootstrap
+
+If you want to work with bootstrap, simply run:
+```bash
+npm add -D bootstrap
+```
+Add this on your global scss:
+```css
+@import "bootstrap";
+```
+
+To test it, add this line into `App.svelte`:
+```html
+<div class="text-success bg-warning">Bootstrap</div>
+```
+
+Check the browser, if you see a green text within yellow box, it means the `bootstrap` is active.
 
 ### Building the Project
 
@@ -77,3 +96,26 @@ To build the project, simply run:
 npm run build
 ```
 It will create a `./dist/` folder. Inside that folder is everything you need for production environment.
+
+### Reducing Bundle Size
+
+If you add bootstrap, you'll notice the final css size is become quite large. If you only use some of the bootstrap feature, you can purge unused css from the final bundle. Start by adding PostCSS & PurgeCSS:
+
+```bash
+npm add -D postcss "@fullhuman/postcss-purgecss"
+```
+
+Then add a `postcss.config.cjs` file with this content:
+```js
+const purgecss = require("@fullhuman/postcss-purgecss")
+
+module.exports = {
+    plugins: [
+        purgecss({
+            content: ['index.html', '**/*.js', '**/*.ts', '**/*.html', '**/*.svelte']
+        })
+    ]
+}
+```
+
+Now if you rebuild the package, you'll notifce the final css has been reduced significantly.
