@@ -1,4 +1,4 @@
-c# ViteJS
+# ViteJS
 
 [ViteJS](https://vitejs.dev/) is a frontend tooling.
 
@@ -110,12 +110,18 @@ Then add a `postcss.config.cjs` file with this content:
 ```js
 const purgecss = require("@fullhuman/postcss-purgecss")
 
-module.exports = {
-    plugins: [
-        purgecss({
+module.exports = ({ env }) => {
+    const postcss = {
+        plugins: []
+    }
+
+    if (env === "production") {
+        plugins.push(purgecss({
             content: ['index.html', '**/*.js', '**/*.ts', '**/*.html', '**/*.svelte']
-        })
-    ]
+        }))
+    }
+
+    return postcss
 }
 ```
 
@@ -144,13 +150,20 @@ It should looks like this:
 ```js
 const purgecss = require("@fullhuman/postcss-purgecss")
 
-module.exports = {
-    plugins: [
-        require("tailwindcss"),
-        purgecss({
+module.exports = ({ env }) => {
+    const postcss = {
+        plugins: [
+            require("tailwindcss"),
+        ]
+    }
+
+    if (env === "production") {
+        plugins.push(purgecss({
             content: ['index.html', '**/*.js', '**/*.ts', '**/*.html', '**/*.svelte']
-        })
-    ]
+        }))
+    }
+
+    return postcss
 }
 ```
 
@@ -170,3 +183,35 @@ Start using it in your `src/App.svelte`:
 Please note that adding tailwindcss will change your global css. The svelte logo will appear on the left (normally center).
 
 Tailwind usually works alongside `autoprefixer`, so you might also wanna add that using `npm add -D autoprefixer`, and then add `require("autoprefixer")` in `postcss.config.cjs`.
+
+## Icons
+
+There's a cool icons you can freely use in your projects.
+
+### Flat Color Icons
+
+Installation:
+```bash
+npm add -D flat-color-icons
+```
+
+Usage example in `App.svelte`:
+```html
+<script>
+    import editIcon from "flat-color-icons/svg/edit_image.svg"
+</script>
+<img src={editIcon} alt="Edit" />
+
+### Material Design Icons
+
+Installation:
+```bash
+npm add -D "@material-design-icons/svg"
+```
+
+Usage example in `App.svelte`:
+```html
+<script>
+    import faceIcon from "@material-design-icons/svg/filled/face.svg"
+</script>
+<img src={faceIcon} alt="Face" />
