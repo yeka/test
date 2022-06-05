@@ -116,7 +116,7 @@ module.exports = ({ env }) => {
     }
 
     if (env === "production") {
-        plugins.push(purgecss({
+        postcss.plugins.push(purgecss({
             content: ['index.html', '**/*.js', '**/*.ts', '**/*.html', '**/*.svelte']
         }))
     }
@@ -158,7 +158,7 @@ module.exports = ({ env }) => {
     }
 
     if (env === "production") {
-        plugins.push(purgecss({
+        postcss.plugins.push(purgecss({
             content: ['index.html', '**/*.js', '**/*.ts', '**/*.html', '**/*.svelte']
         }))
     }
@@ -177,7 +177,7 @@ Update `src/global.scss` and includes 3 new lines:
 
 Start using it in your `src/App.svelte`:
 ```html
-<div class="bg-clip-text text-center text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Hello world</div>
+<div class="bg-clip-text text-center bg-gradient-to-r from-pink-500 to-violet-500">Hello world</div>
 ```
 
 Please note that adding tailwindcss will change your global css. The svelte logo will appear on the left (normally center).
