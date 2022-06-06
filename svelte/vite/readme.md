@@ -186,60 +186,37 @@ Tailwind usually works alongside `autoprefixer`, so you might also wanna add tha
 
 ## Icons
 
-There are cool icons you can freely use in your projects. Here are some of them:
+There are cool icons you can freely use in your projects.
+The biggest collection of them all is Iconify ([https://iconify.design](https://iconify.design)).
+It has a plugin for svelte (`@iconify/svelte`) but the bundle is quite large.
 
-| name | npm name | direct import | svelte npm name | common class name |
-|--|--|--|--|--|
-| [Flat Color Icons](https://icons8.github.io/flat-color-icons/) | `flat-color-icons` | Y | - | - |
-| [Material Design Icons](https://fonts.google.com/icons?icon.set=Material+Icons) | `@material-design-icons/svg` | Y | - | - |
-| [Feather Icons](https://feathericons.com/) | `feather-icons` | Y | [`svelte-feather-icons`](https://github.com/dylanblokhuis/svelte-feather-icons) | `feather` |
-| [Tabler Icons](https://tabler-icons.io/) | `@tabler/icons` | N | [`tabler-icons-svelte`](https://github.com/benflap/tabler-icons-svelte) | `icon icon-tabler` |
+Alternatively, you can use mine. Check it out at [https://github.com/yeka/iconify](https://github.com/yeka/iconify).
 
-You can install one or more using its "npm name":
-
+Quick setup:
 ```bash
-npm add -D flat-color-icons "@material-design-icons/svg" feather-icons "@tabler/icons"
+npm i -D '@iconify/json' 'git+https://github.com/yeka/iconify.git'
 ```
 
-Some icons can be imported directly to be used in project. Example in `App.svelte`:
+`vite.config.js`
+```js
+import { defineConfig } from 'vite'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import yekaIconify from '@yeka/iconify/vite.js'
 
+export default defineConfig((env) => ({
+    plugins: [
+        yekaIconify(env),
+        svelte(),
+    ]
+}))
+```
+
+`App.svelte`
 ```html
 <script>
-    import editIcon from "flat-color-icons/svg/edit_image.svg"
-    import faceIcon from "@material-design-icons/svg/filled/face.svg"
-    import activityIcon from "feather-icons/dist/icons/activity.svg"
+    import Icon from '@yeka/iconify/Icon.svelte'
 </script>
-
-<img src={editIcon} alt="Edit" />
-<img src={faceIcon} alt="Face" />
-<img src={activityIcon} alt="Activity" />
+<Icon icon="mdi:home" />
 ```
 
-The path of each icons may differ, please check the path structure of each packages before using it.
-
-### **Svelte Specific Icon**
-
-Some icons have svelte specific project. Example in `App.svelte`:
-```html
-<script>
-    import { AirplayIcon, AtSignIcon } from 'svelte-feather-icons'
-    import { CurrencyBitcoin, BrandGithub, CircleX } from "tabler-icons-svelte"
-</script>
-
-<AirplayIcon size="24" />
-<AtSignIcon size="1.5x" />
-<CurrencyBitcoin />
-<BrandGithub size="48" strokeWidth="1" />
-<CircleX />
-```
-Loading icon this way is slow.
-
-More information about using svg for various purpose:
-- https://css-tricks.com/using-svg/
-- https://icons.getbootstrap.com/
-- https://css.gg/
-- https://chenhuijing.com/blog/the-many-methods-for-using-svg-icons/
-
-### **TODO**
-It seems the prefered method to use SVG as icons is SVG Sprite.
-But to remove unused sprite, you'll need something like Purge SVG.
+Search any icon here [https://icon-sets.iconify.design/](https://icon-sets.iconify.design/).
