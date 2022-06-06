@@ -219,4 +219,5 @@ export default defineConfig((env) => ({
 <Icon icon="mdi:home" />
 ```
 
-Search any icon here [https://icon-sets.iconify.design/](https://icon-sets.iconify.design/).
+Search any icon here [https://icon-sets.iconify.design/](https://icon-sets.iconify.design/) or here [https://icones.js.org/](https://icones.js.org/).
+Icones also has a Visual Studio Code plugin.
