@@ -186,32 +186,60 @@ Tailwind usually works alongside `autoprefixer`, so you might also wanna add tha
 
 ## Icons
 
-There's a cool icons you can freely use in your projects.
+There are cool icons you can freely use in your projects. Here are some of them:
 
-### Flat Color Icons
+| name | npm name | direct import | svelte npm name | common class name |
+|--|--|--|--|--|
+| [Flat Color Icons](https://icons8.github.io/flat-color-icons/) | `flat-color-icons` | Y | - | - |
+| [Material Design Icons](https://fonts.google.com/icons?icon.set=Material+Icons) | `@material-design-icons/svg` | Y | - | - |
+| [Feather Icons](https://feathericons.com/) | `feather-icons` | Y | [`svelte-feather-icons`](https://github.com/dylanblokhuis/svelte-feather-icons) | `feather` |
+| [Tabler Icons](https://tabler-icons.io/) | `@tabler/icons` | N | [`tabler-icons-svelte`](https://github.com/benflap/tabler-icons-svelte) | `icon icon-tabler` |
 
-Installation:
+You can install one or more using its "npm name":
+
 ```bash
-npm add -D flat-color-icons
+npm add -D flat-color-icons "@material-design-icons/svg" feather-icons "@tabler/icons"
 ```
 
-Usage example in `App.svelte`:
+Some icons can be imported directly to be used in project. Example in `App.svelte`:
+
 ```html
 <script>
     import editIcon from "flat-color-icons/svg/edit_image.svg"
+    import faceIcon from "@material-design-icons/svg/filled/face.svg"
+    import activityIcon from "feather-icons/dist/icons/activity.svg"
 </script>
+
 <img src={editIcon} alt="Edit" />
-
-### Material Design Icons
-
-Installation:
-```bash
-npm add -D "@material-design-icons/svg"
+<img src={faceIcon} alt="Face" />
+<img src={activityIcon} alt="Activity" />
 ```
 
-Usage example in `App.svelte`:
+The path of each icons may differ, please check the path structure of each packages before using it.
+
+### **Svelte Specific Icon**
+
+Some icons have svelte specific project. Example in `App.svelte`:
 ```html
 <script>
-    import faceIcon from "@material-design-icons/svg/filled/face.svg"
+    import { AirplayIcon, AtSignIcon } from 'svelte-feather-icons'
+    import { CurrencyBitcoin, BrandGithub, CircleX } from "tabler-icons-svelte"
 </script>
-<img src={faceIcon} alt="Face" />
+
+<AirplayIcon size="24" />
+<AtSignIcon size="1.5x" />
+<CurrencyBitcoin />
+<BrandGithub size="48" strokeWidth="1" />
+<CircleX />
+```
+Loading icon this way is slow.
+
+More information about using svg for various purpose:
+- https://css-tricks.com/using-svg/
+- https://icons.getbootstrap.com/
+- https://css.gg/
+- https://chenhuijing.com/blog/the-many-methods-for-using-svg-icons/
+
+### **TODO**
+It seems the prefered method to use SVG as icons is SVG Sprite.
+But to remove unused sprite, you'll need something like Purge SVG.
