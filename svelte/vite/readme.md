@@ -50,6 +50,48 @@ export default defineConfig({
 ...
 ```
 
+## Path Aliasing
+
+When importing a file from sub folders, using '../..' can be dauting.
+Instead, use '@' to refer to './src/' folder by using path alias.
+
+Install some dependencies:
+```bash
+npm add -D path @types/node
+```
+
+Edit `vite.config.ts`:
+```js
+...
+import path from 'path'
+...
+
+export default defineConfig((env) => ({
+  ...
+  resolve:{
+    alias:{
+      '@' : path.resolve(__dirname, './src/')
+    },
+  },
+  ...
+}))
+```
+
+Also edit `tsconfig.json`:
+```
+{
+  ...
+  "compilerOptions": {
+    ...
+    "paths": {
+      "@/*": ["./src/*"],
+    }
+    ...
+  },
+  ...
+}
+```
+
 ## Global SCSS/CSS
 
 Next, add a global scss (or css) file at `src/global.scss` and put this inside those file:
