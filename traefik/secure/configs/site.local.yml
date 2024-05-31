@@ -1,0 +1,21 @@
+http:
+  routers:
+    # "myweb" is the name of our router, can be anything
+    txprint:
+      # "rule" is a must, it defines some criterias that will activates this route.
+      rule: "Host(`site.local`) && PathPrefix(`/`)"
+
+      # "service" defines which service this route will pass to.
+      service: "goweb"
+      tls:
+        certResolver: letsencrypt
+
+
+  services:
+    # "goweb" is the name of service, can be anything.
+    # this service is used by routers.
+    goweb:
+      loadBalancer:
+        servers:
+          - url: "http://127.0.0.1:8100"
+

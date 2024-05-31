@@ -1,0 +1,28 @@
+api:
+  dashboard: true
+
+providers:
+  file:
+    directory: "configs"
+    watch: true
+
+entryPoints:
+  websecure:
+    address: ":443"
+    reusePort: true
+
+  web:
+    address: ":80"
+    reusePort: true
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: your@email.com
+      storage: acme.json
+      httpChallenge:
+        entryPoint: websecure
