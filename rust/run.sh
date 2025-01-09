@@ -1,4 +1,5 @@
 #/bin/sh
 rustc $1 -o temp-bin
-./temp-bin
+shift
+./temp-bin $@
 rm -f temp-bin

@@ -1,17 +1,22 @@
 # Rust
 
-Learn rust using docker container. Enter container using:
-`docker run -it --rm -v $(PWD):/app -w /app rust:alpine sh`
+Learn rust using docker container.
+Enter container using:
+> `docker run -it --rm -v $(PWD):/app -w /app rust:alpine sh`
+
+or open VSCode in devcontainer mode.
+
+Press `Ctrl + Shift P` and then choose `Dev Containers: Reopen in container` to start development inside container.
+
 
 Compile using:
-`rustc helloworld.rs`
+> `rustc helloworld.rs`
 
 Then run the compiled version:
-`./helloworld`
+> `./helloworld`
 
 Alternatively, use `run.sh` for compiling, run the compiled version, and then removed the compiled binary.
-
-`./run.sh helloworld.sh`
+> `./run.sh helloworld.sh`
 
 # Package Manager
 
